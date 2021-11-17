@@ -8,16 +8,14 @@ package com.usp.ipen.acs.Attenuation_Correction_SPECT;
 //import Attenuation_Correction_SPECT_PET.source.*;
 import com.usp.ipen.acs.Attenuation_Correction_SPECT.source.ParameterToAttenuationCorrection;
 import javax.swing.JOptionPane;
-import ij.*;
 import ij.process.*;
 import java.awt.*;
-import ij.plugin.filter.*;
 
 /**
  *
  * @author fmassicano
  */
-public class ACS_ implements PlugInFilter{
+public class ACS_ {
 
     private static ImageProcessor copy;
     private static ImageProcessor image;
@@ -25,14 +23,10 @@ public class ACS_ implements PlugInFilter{
     
     private static int x , y;
 
-    public int setup(String arg, ImagePlus imp) {
-        return DOES_ALL;
-    }
-
-    public void run(ImageProcessor ip) {
+    public static void run(ImageProcessor ip) {
 
         image = ip;
-
+            
         x = ip.getHeight(); // coluna
         y = ip.getWidth();  // linha
 
@@ -116,7 +110,7 @@ public class ACS_ implements PlugInFilter{
     }
 
     
-    private boolean[][] PutFalse(int w, int h){
+    public static boolean[][] PutFalse(int w, int h){
         boolean[][] r = new boolean[w][h];
         
         for (int i = 0; i < w; i++) {
